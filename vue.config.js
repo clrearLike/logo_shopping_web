@@ -3,6 +3,17 @@ module.exports = {
       devServer: {
         port: 8888,
         open: true,
+        //设置跨域的问题
+        proxy: {
+          "/api": {
+            target: 'http://127.0.0.1:1001/',
+            ws: true,
+            changOrigin: true,
+            pathRewrite: {
+              "^/api":"/"
+            }
+          }
+        },
         before(app){
           let userpool = [
             {username: 'jack',password: '1234'},

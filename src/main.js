@@ -10,6 +10,12 @@ Vue.prototype.$http=axios
 
 Vue.config.productionTip = false
 
+//设置请求拦截
+axios.interceptors.request.use(config=>{
+  config.url = "/api" + config.url;
+  return config;
+})
+
 new Vue({
   router,
   store,

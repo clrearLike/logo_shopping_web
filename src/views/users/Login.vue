@@ -18,7 +18,7 @@ export default {
         return {
             model: {
                 username: '',
-                password: ''
+                pwd: ''
             },
             schema: {
                 fields: [
@@ -43,7 +43,7 @@ export default {
                     },
                     {
                         type: 'input',
-                        modelKey: 'password',
+                        modelKey: 'pwd',
                         props: {
                             placeholder: '请输入密码',
                             type: 'password',
@@ -78,7 +78,7 @@ export default {
             e.preventDefault();
             //一下是模拟数据，不是真是数据
             try{
-                const result = await this.$http.get('/api/login',{params: this.model});
+                const result = await this.$http.get('/api/users/findByName',{params: this.model});
                 console.log(result);
                 if(result.data.code == 200){ 
                     this.$store.commit('setToken',result.data.token);
